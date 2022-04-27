@@ -2,12 +2,11 @@ import { domInjector } from '../decorators/dom-injector.js';
 import { inspect } from '../decorators/inspect.js';
 import { logRuntime } from '../decorators/log-runtime.js';
 import { DaysWeek } from '../enums/days-week.js';
+import { INegotiationsService } from '../interfaces/negotiations-service.js';
+import { INegotiations } from '../interfaces/negotiations.js';
+import { IView } from '../interfaces/view.js';
 import { Negotiation } from '../models/negotiation.js';
-import { Negotiations } from '../models/negotiations.js';
-import { NegotiationsService } from '../services/negotiations-service.js';
 import { print } from '../utils/print.js';
-import { MessageView } from '../views/message-view.js';
-import { NegotiationsView } from '../views/negotiations-view.js';
 
 export class NegotiationController {
   @domInjector('#date')
@@ -16,12 +15,13 @@ export class NegotiationController {
   private inputQuantity: HTMLInputElement;
   @domInjector('#value')
   private inputValue: HTMLInputElement;
-  private negotiations = new Negotiations();
-  private negotiationsView = new NegotiationsView('#negotiationsView');
-  private messageView = new MessageView('#messageView');
-  private negotiationsService = new NegotiationsService();
 
-  constructor() {
+  constructor(
+    private negotiations: INegotiations,
+    private negotiationsView: IView,
+    private messageView: IView,
+    private negotiationsService: INegotiationsService
+  ) {
     this.negotiationsView.update(this.negotiations);
   }
 

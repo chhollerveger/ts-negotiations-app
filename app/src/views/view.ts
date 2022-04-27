@@ -1,4 +1,6 @@
-export abstract class View<T> {
+import { IView } from "../interfaces/view";
+
+export abstract class View<T> implements IView {
   protected element: HTMLElement;
 
   constructor(selector: string) {

@@ -1,11 +1,11 @@
 import { escape } from '../decorators/escape.js';
-import { Negotiations } from '../models/negotiations.js';
+import { INegotiations } from '../interfaces/negotiations.js';
 import { View } from './view.js';
 
-export class NegotiationsView extends View<Negotiations> {
+export class NegotiationsView extends View<INegotiations> {
 
   @escape()
-  protected template(negotiations: Negotiations): string {
+  protected template(negotiations: INegotiations): string {
     return `
       <table class="table table-hover table-bordered">
           <thead>

@@ -1,7 +1,8 @@
 import { Model } from '../interfaces/model.js';
+import { INegotiations } from '../interfaces/negotiations.js';
 import { Negotiation } from './negotiation.js';
 
-export class Negotiations implements Model<Negotiations> {
+export class Negotiations implements Model<Negotiations>, INegotiations {
   private negotiation: Negotiation[] = [];
 
   public add(negotiation: Negotiation) {

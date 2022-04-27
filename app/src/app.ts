@@ -1,6 +1,6 @@
-import { NegotiationController } from './controllers/negotiation-controller.js';
+import { makeNegotiationControllerFactory } from './factories/negotiation-controller-factory.js';
 
-const controller = new NegotiationController();
+const controller = makeNegotiationControllerFactory();
 const form = document.querySelector('.form');
 if (!form) {
 	throw Error('The application could not be initialized. Check if the form exists!');

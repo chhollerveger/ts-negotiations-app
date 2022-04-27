@@ -9,17 +9,13 @@ import { inspect } from '../decorators/inspect.js';
 import { logRuntime } from '../decorators/log-runtime.js';
 import { DaysWeek } from '../enums/days-week.js';
 import { Negotiation } from '../models/negotiation.js';
-import { Negotiations } from '../models/negotiations.js';
-import { NegotiationsService } from '../services/negotiations-service.js';
 import { print } from '../utils/print.js';
-import { MessageView } from '../views/message-view.js';
-import { NegotiationsView } from '../views/negotiations-view.js';
 export class NegotiationController {
-    constructor() {
-        this.negotiations = new Negotiations();
-        this.negotiationsView = new NegotiationsView('#negotiationsView');
-        this.messageView = new MessageView('#messageView');
-        this.negotiationsService = new NegotiationsService();
+    constructor(negotiations, negotiationsView, messageView, negotiationsService) {
+        this.negotiations = negotiations;
+        this.negotiationsView = negotiationsView;
+        this.messageView = messageView;
+        this.negotiationsService = negotiationsService;
         this.negotiationsView.update(this.negotiations);
     }
     add() {
